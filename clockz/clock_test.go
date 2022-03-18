@@ -9,7 +9,7 @@ import (
 	"github.com/ibrt/golang-inject-clock/clockz"
 )
 
-func TestClock(t *testing.T) {
+func TestModule(t *testing.T) {
 	injector, releaser := clockz.Initializer(context.Background())
 	defer releaser()
 	ctx := injector(context.Background())

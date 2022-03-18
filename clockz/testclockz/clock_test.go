@@ -19,7 +19,7 @@ func TestClockz(t *testing.T) {
 
 type Suite struct {
 	*fixturez.DefaultConfigMixin
-	Clockz *testclockz.Helper
+	Clock *testclockz.Helper
 }
 
 func (s *Suite) TestHelper(ctx context.Context, t *testing.T) {
@@ -30,11 +30,11 @@ func (s *Suite) TestHelper(ctx context.Context, t *testing.T) {
 
 type MockSuite struct {
 	*fixturez.DefaultConfigMixin
-	Clockz *testclockz.MockHelper
+	Clock *testclockz.MockHelper
 }
 
 func (s *MockSuite) TestMockHelper(ctx context.Context, t *testing.T) {
 	now := time.Now().Add(-time.Minute)
-	s.Clockz.Clock.Set(now)
+	s.Clock.Clock.Set(now)
 	require.Equal(t, now, clockz.Get(ctx).Now())
 }

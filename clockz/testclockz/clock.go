@@ -19,7 +19,7 @@ var (
 	_ fixturez.AfterTest   = &MockHelper{}
 )
 
-// Helper provides a test helper for clockz using a real Clock.
+// Helper is a test helper for Clock.
 type Helper struct {
 	releaser injectz.Releaser
 }
@@ -37,7 +37,7 @@ func (f *Helper) AfterSuite(_ context.Context, _ *testing.T) {
 	f.releaser = nil
 }
 
-// MockHelper provides a test helper for clockz using a mock Clock.
+// MockHelper is a test helper for Clock.
 type MockHelper struct {
 	Clock *clock.Mock
 }

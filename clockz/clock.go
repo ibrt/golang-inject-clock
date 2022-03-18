@@ -30,7 +30,7 @@ func NewSingletonInjector(clock Clock) injectz.Injector {
 	return injectz.NewSingletonInjector(clockContextKey, clock)
 }
 
-// Get returns the Clock, panics if not found.
+// Get extracts the Clock from context, panics if not found.
 func Get(ctx context.Context) Clock {
 	return ctx.Value(clockContextKey).(Clock)
 }
