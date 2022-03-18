@@ -34,7 +34,7 @@ func NewSingletonInjector(clock Clock) injectz.Injector {
 // Get extracts the Clock from context, panics if not found.
 func Get(ctx context.Context) Clock {
 	clk := MaybeGet(ctx)
-	errorz.Assertf(clk != nil, "clock: not initialized")
+	errorz.Assertf(clk != nil, "clockz: not initialized", errorz.Skip())
 	return clk
 }
 

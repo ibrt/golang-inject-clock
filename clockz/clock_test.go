@@ -18,7 +18,7 @@ func TestModule(t *testing.T) {
 	require.NotNil(t, now)
 	require.NotZero(t, now)
 	require.Nil(t, clockz.MaybeGet(context.Background()))
-	fixturez.RequirePanicsWith(t, "clock: not initialized", func() {
+	fixturez.RequirePanicsWith(t, "clockz: not initialized", func() {
 		clockz.Get(context.Background())
 	})
 }
