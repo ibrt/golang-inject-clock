@@ -23,9 +23,9 @@ type Suite struct {
 }
 
 func (s *Suite) TestHelper(ctx context.Context, t *testing.T) {
-	now := clockz.Get(ctx)
-	require.NotNil(t, now)
-	require.NotZero(t, now)
+	clk := clockz.Get(ctx)
+	require.NotNil(t, clk)
+	require.NotZero(t, clk.Now())
 }
 
 type MockSuite struct {

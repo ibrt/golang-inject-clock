@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/benbjohnson/clock"
+	"github.com/ibrt/golang-errors/errorz"
 	"github.com/ibrt/golang-inject/injectz"
 )
 
@@ -32,5 +33,15 @@ func NewSingletonInjector(clock Clock) injectz.Injector {
 
 // Get extracts the Clock from context, panics if not found.
 func Get(ctx context.Context) Clock {
-	return ctx.Value(clockContextKey).(Clock)
+	clk := MaybeGet(ctx)
+	errorz.Assertf(clk != nil, "clock: not initialized")
+	return clk
+}
+
+// MaybeGet is like Get but returns nil if not found.
+func MaybeGet(ctx context.Context) Clock {
+	if clk, ok := ctx.Value(clockContextKey).(Clock); ok {
+		return clk
+	}
+	return nil
 }
