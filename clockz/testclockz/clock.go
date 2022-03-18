@@ -39,18 +39,18 @@ func (f *Helper) AfterSuite(_ context.Context, _ *testing.T) {
 
 // MockHelper is a test helper for Clock.
 type MockHelper struct {
-	Clock *clock.Mock
+	Mock *clock.Mock
 }
 
 // BeforeTest implements fixturez.BeforeTest.
 func (f *MockHelper) BeforeTest(ctx context.Context, _ *testing.T) context.Context {
-	f.Clock = clock.NewMock()
-	f.Clock = clock.NewMock()
-	f.Clock.Set(time.Now().UTC())
-	return clockz.NewSingletonInjector(f.Clock)(ctx)
+	f.Mock = clock.NewMock()
+	f.Mock = clock.NewMock()
+	f.Mock.Set(time.Now().UTC())
+	return clockz.NewSingletonInjector(f.Mock)(ctx)
 }
 
 // AfterTest implements fixturez.AfterTest.
 func (f *MockHelper) AfterTest(_ context.Context, _ *testing.T) {
-	f.Clock = nil
+	f.Mock = nil
 }

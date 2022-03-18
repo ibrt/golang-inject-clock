@@ -12,7 +12,7 @@ import (
 	"github.com/ibrt/golang-inject-clock/clockz/testclockz"
 )
 
-func TestClockz(t *testing.T) {
+func TestHelpers(t *testing.T) {
 	fixturez.RunSuite(t, &Suite{})
 	fixturez.RunSuite(t, &MockSuite{})
 }
@@ -35,6 +35,6 @@ type MockSuite struct {
 
 func (s *MockSuite) TestMockHelper(ctx context.Context, t *testing.T) {
 	now := time.Now().Add(-time.Minute)
-	s.Clock.Clock.Set(now)
+	s.Clock.Mock.Set(now)
 	require.Equal(t, now, clockz.Get(ctx).Now())
 }

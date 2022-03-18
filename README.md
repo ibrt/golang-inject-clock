@@ -63,7 +63,7 @@ var (
 
 type Suite struct {
     *fixturez.DefaultConfigMixin
-    Clockz *testclockz.MockHelper
+    Clock *testclockz.MockHelper
 }
 
 func TestSuite(t *testing.T) {
@@ -74,7 +74,7 @@ func (s *Suite) TestHandler(ctx context.Context, t *testing.T) {
     const nowStr = "2009-11-18T08:04:34.829482969Z"
     now, err := time.Parse(time.RFC3339Nano, nowStr)
     require.NoError(t, err)
-    s.Clockz.Clock.Set(now)
+    s.Clock.Mock.Set(now)
 
     w := httptest.NewRecorder()
     r := httptest.NewRequest("GET", "/", nil).WithContext(ctx)
