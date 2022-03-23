@@ -4,7 +4,6 @@ import (
 	"context"
 	"testing"
 
-	"github.com/ibrt/golang-fixtures/fixturez"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ibrt/golang-inject-clock/clockz"
@@ -13,12 +12,13 @@ import (
 func TestModule(t *testing.T) {
 	injector, releaser := clockz.Initializer(context.Background())
 	defer releaser()
-	ctx := injector(context.Background())
-	now := clockz.Get(ctx)
-	require.NotNil(t, now)
-	require.NotZero(t, now)
-	require.Nil(t, clockz.MaybeGet(context.Background()))
-	fixturez.RequirePanicsWith(t, "clockz: not initialized", func() {
-		clockz.Get(context.Background())
-	})
+
+	clock := clockz.Get(context.Background())
+	require.NotNil(t, clock)
+
+	clock = clockz.Get(injector(context.Background()))
+	require.NotNil(t, clock)
+
+	clock = clockz.Get(clockz.NewSingletonInjector(clock)(context.Background()))
+	require.NotNil(t, clock)
 }

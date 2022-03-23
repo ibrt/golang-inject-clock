@@ -3,8 +3,7 @@ package clockz
 import (
 	"context"
 
-	"github.com/benbjohnson/clock"
-	"github.com/ibrt/golang-errors/errorz"
+	clocklib "github.com/benbjohnson/clock"
 	"github.com/ibrt/golang-inject/injectz"
 )
 
@@ -16,14 +15,16 @@ const (
 
 var (
 	_ injectz.Initializer = Initializer
+
+	defaultClock = clocklib.New()
 )
 
 // Clock describes a clock.
-type Clock clock.Clock
+type Clock clocklib.Clock
 
 // Initializer is a Clock initializer.
 func Initializer(_ context.Context) (injectz.Injector, injectz.Releaser) {
-	return NewSingletonInjector(clock.New()), injectz.NewNoopReleaser()
+	return injectz.NewNoopInjector(), injectz.NewNoopReleaser()
 }
 
 // NewSingletonInjector always injects the given Clock.
@@ -31,17 +32,10 @@ func NewSingletonInjector(clock Clock) injectz.Injector {
 	return injectz.NewSingletonInjector(clockContextKey, clock)
 }
 
-// Get extracts the Clock from context, panics if not found.
+// Get extracts the Clock from context, returns the default clock if not found.
 func Get(ctx context.Context) Clock {
-	clk := MaybeGet(ctx)
-	errorz.Assertf(clk != nil, "clockz: not initialized", errorz.SkipPackage())
-	return clk
-}
-
-// MaybeGet is like Get but returns nil if not found.
-func MaybeGet(ctx context.Context) Clock {
-	if clk, ok := ctx.Value(clockContextKey).(Clock); ok {
-		return clk
+	if clock, ok := ctx.Value(clockContextKey).(Clock); ok {
+		return clock
 	}
-	return nil
+	return defaultClock
 }

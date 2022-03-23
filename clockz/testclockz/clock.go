@@ -45,7 +45,6 @@ type MockHelper struct {
 // BeforeTest implements fixturez.BeforeTest.
 func (f *MockHelper) BeforeTest(ctx context.Context, _ *testing.T) context.Context {
 	f.Mock = clock.NewMock()
-	f.Mock = clock.NewMock()
 	f.Mock.Set(time.Now().UTC())
 	return clockz.NewSingletonInjector(f.Mock)(ctx)
 }

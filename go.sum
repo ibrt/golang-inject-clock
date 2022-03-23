@@ -9,8 +9,8 @@ github.com/ibrt/golang-errors v1.1.0 h1:88RDWpqPBqqf3zhhJxcAaF/2E+W23SXohG9exckq
 github.com/ibrt/golang-errors v1.1.0/go.mod h1:T4eQeBJ8CKAp52LT1dHwJ6qKnWKRgoTjDqDF7DM2U08=
 github.com/ibrt/golang-fixtures v1.2.2 h1:Zjfk8dmx6Nr+z13jfJageptGjHzj+snUiqK+NMfyHXQ=
 github.com/ibrt/golang-fixtures v1.2.2/go.mod h1:WgnVPT8CZuGBcjBPaYr1q1FV5KLQ8e/speMrgaQCp+0=
-github.com/ibrt/golang-inject v1.0.1 h1:XV0cRqfFMzzzKsa5nLLulf7vF27h6DcPagm0DlnYntE=
-github.com/ibrt/golang-inject v1.0.1/go.mod h1:Orii0eKaskijFl2Yl8YVVAPUxZ4r7sAKMLXcREYnedo=
+github.com/ibrt/golang-inject v1.1.0 h1:C2ChbQeLtnf4+6rKfeD7UmaZC5QusPh0aAi89/Qs8sI=
+github.com/ibrt/golang-inject v1.1.0/go.mod h1:Orii0eKaskijFl2Yl8YVVAPUxZ4r7sAKMLXcREYnedo=
 github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
