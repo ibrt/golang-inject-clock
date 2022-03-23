@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/benbjohnson/clock v1.3.0
-	github.com/ibrt/golang-fixtures v1.2.3
+	github.com/ibrt/golang-fixtures v1.2.4
 	github.com/ibrt/golang-inject v1.1.0
 	github.com/stretchr/testify v1.7.0
 )
